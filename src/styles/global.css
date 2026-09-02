@@ -32,21 +32,25 @@
    ========================================================================== */
 
 :root {
-  /* Palette */
-  --paper: #f3f2ee;
-  --ink: #1a1d21;
-  --graphite: #5c6169;
-  --brass: #7d5d18;
-  --chalk: #e2e0d8;
-  --sunk: #eae8e1;
+  color-scheme: dark;
+
+  /* Palette — near-black ground, warm off-white type, one gold accent. */
+  --ink: #0f0f11;
+  --paper: #f2f0ea;
+  --bright: #ffffff;
+  --graphite: #9c9aa2;
+  --brass: #d9ae57;
+  --chalk: #2a2a2f;
+  --sunk: #17171b;
 
   /* Faces */
   --font-display: 'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-body: 'Newsreader', 'Iowan Old Style', Charter, Georgia, serif;
 
   /* Scale */
-  --step-claim: clamp(2.375rem, 1.3rem + 4.4vw, 4.25rem);
-  --step-h1: clamp(1.9rem, 1.4rem + 2vw, 2.75rem);
+  --step-hero: clamp(2.75rem, 1.2rem + 6.2vw, 5.75rem);
+  --step-claim: clamp(2.25rem, 1.3rem + 3.9vw, 4rem);
+  --step-h1: clamp(2rem, 1.4rem + 2.4vw, 3rem);
   --step-h2: 1.625rem;
   --step-h3: 1.1875rem;
   --step-stand: 1.375rem;
@@ -57,7 +61,7 @@
   /* Measure and rhythm */
   --measure: 66ch;
   --gutter: clamp(1.25rem, 5vw, 3rem);
-  --page: 64rem;
+  --page: 68rem;
   --rail: 13rem;
 }
 
@@ -89,10 +93,11 @@ html {
 }
 
 body {
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
   font-family: var(--font-body);
   font-size: var(--step-body);
+  font-weight: 420;
   line-height: 1.65;
   font-optical-sizing: auto;
   text-rendering: optimizeLegibility;
@@ -115,7 +120,7 @@ ol {
 }
 
 ::selection {
-  background: #e8dcbc;
+  background: var(--brass);
   color: var(--ink);
 }
 
@@ -155,8 +160,8 @@ ol {
   left: -9999px;
   top: 0;
   z-index: 10;
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--paper);
+  color: var(--ink);
   padding: 0.6rem 1rem;
   font-family: var(--font-display);
   font-size: var(--step-small);
@@ -205,7 +210,7 @@ ol {
   font-weight: 600;
   letter-spacing: -0.01em;
   text-decoration: none;
-  color: var(--ink);
+  color: var(--bright);
 }
 .masthead__name:hover {
   text-decoration: underline;
@@ -225,7 +230,7 @@ ol {
 }
 .masthead__nav a:hover,
 .masthead__nav a[aria-current='page'] {
-  color: var(--ink);
+  color: var(--bright);
   text-decoration: underline;
   text-decoration-color: var(--brass);
   text-decoration-thickness: 1px;
@@ -259,7 +264,7 @@ ol {
 }
 
 .colophon a {
-  color: var(--ink);
+  color: var(--paper);
   text-decoration: underline;
   text-decoration-color: var(--brass);
   text-decoration-thickness: 1px;
@@ -278,22 +283,78 @@ main {
    ========================================================================== */
 
 .hero {
-  padding-block: clamp(3.5rem, 9vw, 6.5rem) clamp(2.5rem, 6vw, 4.5rem);
+  padding-block: clamp(3rem, 7vw, 5.5rem) clamp(3rem, 7vw, 5rem);
+  display: grid;
+  gap: clamp(2.25rem, 5vw, 4rem);
+  align-items: center;
+}
+
+@media (min-width: 56rem) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) 23rem;
+  }
 }
 
 .hero__statement {
-  font-size: var(--step-stand);
-  font-weight: 400;
-  line-height: 1.5;
-  max-width: 30rem;
-  letter-spacing: -0.005em;
+  font-family: var(--font-display);
+  font-size: var(--step-hero);
+  font-weight: 500;
+  font-stretch: 100%;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--bright);
+  text-wrap: balance;
+}
+
+/* The one sentence carries the accent, so the eye lands on the verb. */
+.hero__statement em {
+  font-style: normal;
+  color: var(--brass);
 }
 
 .hero__note {
-  margin-top: 1.5rem;
-  max-width: 30rem;
-  font-size: var(--step-small);
+  margin-top: 1.75rem;
+  max-width: 34ch;
+  font-size: var(--step-stand);
+  line-height: 1.5;
   color: var(--graphite);
+}
+
+.hero__cta {
+  display: inline-block;
+  margin-top: 2.25rem;
+  padding: 0.85rem 1.6rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  background: var(--paper);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.hero__cta:hover {
+  background: var(--brass);
+  color: var(--ink);
+}
+
+.hero__portrait {
+  width: 100%;
+  max-width: 23rem;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 6px;
+  /* Lifts a warm photograph off the near-black ground without a border. */
+  box-shadow: 0 0 0 1px var(--chalk), 0 24px 60px rgb(0 0 0 / 55%);
+}
+
+@media (max-width: 55.99rem) {
+  /* Fill the column on a phone rather than leaving a ragged gap beside it. */
+  .hero__portrait {
+    max-width: 20rem;
+  }
 }
 
 /* The signature element: one sentence of judgment per study, set large. */
@@ -331,6 +392,7 @@ main {
 }
 
 .row__claim {
+  color: var(--bright);
   font-family: var(--font-display);
   font-size: var(--step-claim);
   font-weight: 500;
@@ -360,7 +422,7 @@ main {
 }
 
 .row__read {
-  color: var(--ink);
+  color: var(--paper);
 }
 
 /* Hover and focus both land on the claim, which is what the eye is on. */
@@ -393,6 +455,7 @@ main {
 }
 
 .study__title {
+  color: var(--bright);
   font-family: var(--font-display);
   font-size: var(--step-h1);
   font-weight: 500;
@@ -409,7 +472,7 @@ main {
   font-style: italic;
   font-size: var(--step-stand);
   line-height: 1.45;
-  color: var(--ink);
+  color: var(--paper);
   margin-top: 1.5rem;
   max-width: 38ch;
   text-wrap: pretty;
@@ -509,6 +572,7 @@ main {
 }
 
 .prose h2 {
+  color: var(--bright);
   font-family: var(--font-display);
   font-size: var(--step-h2);
   font-weight: 500;
@@ -519,6 +583,7 @@ main {
 }
 
 .prose h3 {
+  color: var(--bright);
   font-family: var(--font-display);
   font-size: var(--step-h3);
   font-weight: 600;
@@ -532,7 +597,7 @@ main {
 }
 
 .prose a {
-  color: var(--ink);
+  color: var(--bright);
   text-decoration: underline;
   text-decoration-color: var(--brass);
   text-decoration-thickness: 1px;
@@ -562,7 +627,7 @@ main {
   font-style: italic;
   font-size: 1.0625em;
   line-height: 1.5;
-  color: var(--ink);
+  color: var(--paper);
 }
 
 .prose blockquote p + p {
@@ -580,6 +645,7 @@ main {
 .prose figure img {
   width: 100%;
   border: 1px solid var(--chalk);
+  border-radius: 3px;
 }
 
 .prose figcaption {
@@ -639,7 +705,7 @@ main {
   font-size: 1.0625rem;
   font-weight: 500;
   line-height: 1.25;
-  color: var(--ink);
+  color: var(--bright);
   text-decoration: none;
 }
 .adjacent a:hover {
@@ -658,6 +724,7 @@ main {
 }
 
 .page__title {
+  color: var(--bright);
   font-family: var(--font-display);
   font-size: var(--step-h1);
   font-weight: 500;

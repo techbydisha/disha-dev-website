@@ -11,13 +11,30 @@ const studies = (await getCollection('work'))
 <Base title={SITE.name} description={SITE.tagline} section="work">
   <div class="shell">
     <section class="hero">
-      <!-- Positioning statement. Rewrite in your own words; keep it to three lines. -->
-      <h1 class="hero__statement">
-        Software developer moving into product and technical program management.
-      </h1>
-      <p class="hero__note">
-        Three case studies below. Each one opens with the decision it turned on.
-      </p>
+      <div>
+        <!--
+          Your positioning statement. Keep it first person and keep it short —
+          it is the largest type on the site. Wrap one phrase in <em> to put
+          the gold accent on it.
+        -->
+        <h1 class="hero__statement">
+          I’m Disha. I build software, and I’m moving into <em>product</em>.
+        </h1>
+        <p class="hero__note">
+          Software developer working toward product and technical program management.
+          Three case studies below — each one opens with the decision it turned on.
+        </p>
+        <a class="hero__cta" href="#work">Read the work →</a>
+      </div>
+
+      <img
+        class="hero__portrait"
+        src="/images/disha.jpg"
+        alt="Disha Nagpal, smiling, outdoors in front of a brick and stone wall."
+        width="800"
+        height="1000"
+        fetchpriority="high"
+      />
     </section>
 
     <h2 class="sr-only" id="work">Case studies</h2>

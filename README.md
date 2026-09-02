@@ -83,6 +83,9 @@ is the reason the page is readable at 800 words.
   [`src/consts.ts`](src/consts.ts). Change them once; the nav and footer follow.
 - **Résumé** — replace `public/disha-nagpal-resume.pdf` with your real PDF,
   keeping the filename (or update `SITE.resume` in `src/consts.ts`).
+- **Your photo** — replace `public/images/disha.jpg`, keeping the filename. It
+  is displayed at a 4:5 crop, so a portrait-orientation file works best; roughly
+  800×1000 is plenty. The file there now is a grey placeholder.
 
 ## Design
 
@@ -91,17 +94,23 @@ Six colours, two faces, one signature element. All of it lives in
 
 | Token | Value | Job |
 | --- | --- | --- |
-| `--paper` | `#f3f2ee` | Page ground |
-| `--ink` | `#1a1d21` | Body text |
-| `--graphite` | `#5c6169` | Metadata, captions |
-| `--brass` | `#7d5d18` | The only accent: link underlines, focus ring, the rule under a standfirst |
-| `--chalk` | `#e2e0d8` | Hairlines |
-| `--sunk` | `#eae8e1` | The metadata rail on small screens |
+| `--ink` | `#0f0f11` | Page ground (near-black) |
+| `--paper` | `#f2f0ea` | Body text, warm off-white |
+| `--bright` | `#ffffff` | Headlines |
+| `--graphite` | `#9c9aa2` | Metadata, captions |
+| `--brass` | `#d9ae57` | The only accent: the hero highlight, link underlines, focus ring, CTA hover |
+| `--chalk` | `#2a2a2f` | Hairlines |
+| `--sunk` | `#17171b` | The metadata rail on small screens |
+
+Lowest text contrast on the site is 6.4:1, comfortably past the 4.5:1 AA bar.
 
 **Display: Bricolage Grotesque. Body: Newsreader.** Both are self-hosted,
 latin-subset, variable `.woff2` files in `public/fonts/` — there is no request
 to Google Fonts at runtime. If you ever swap a face, replace the file and the
 `@font-face` block; the `--font-display` / `--font-body` tokens do the rest.
+
+The homepage hero is a first-person statement with one phrase wrapped in `<em>`,
+which is what turns it gold — that `<em>` is not italic here, it's the accent.
 
 The signature element is the **claim line**: the same sentence is the headline
 on the homepage and the standfirst on the case study, with the hierarchy
