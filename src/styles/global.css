@@ -36,7 +36,7 @@
   --paper: #f3f2ee;
   --ink: #1a1d21;
   --graphite: #5c6169;
-  --brass: #8a6a1f;
+  --brass: #7d5d18;
   --chalk: #e2e0d8;
   --sunk: #eae8e1;
 
@@ -339,7 +339,6 @@ main {
   letter-spacing: -0.022em;
   margin-top: clamp(1rem, 2.5vw, 1.75rem);
   max-width: 19ch;
-  text-wrap: balance;
 }
 
 @media (max-width: 37.5rem) {
@@ -390,7 +389,7 @@ main {
 }
 
 .study__head {
-  max-width: 22ch;
+  max-width: 46rem;
 }
 
 .study__title {
@@ -401,6 +400,8 @@ main {
   line-height: 1.08;
   letter-spacing: -0.02em;
   margin-top: 0.75rem;
+  /* ch resolves against this element's own display face and size. */
+  max-width: 17ch;
   text-wrap: balance;
 }
 
@@ -410,7 +411,7 @@ main {
   line-height: 1.45;
   color: var(--ink);
   margin-top: 1.5rem;
-  max-width: 34ch;
+  max-width: 38ch;
   text-wrap: pretty;
 }
 
@@ -571,8 +572,9 @@ main {
 /* Images break the measure and run the full content width. */
 .prose figure {
   margin-block: 2.5em;
+  /* Deliberately wider than the 66ch measure, clamped by the viewport. */
   max-width: none;
-  width: min(100%, 46rem);
+  width: min(46rem, calc(100vw - 2 * var(--gutter)));
 }
 
 .prose figure img {
