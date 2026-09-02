@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { SITE } from '../consts';
+
+const studies = (await getCollection('work'))
+  .filter((entry) => !entry.data.draft)
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<Base title={SITE.name} description={SITE.tagline} section="work">
+  <div class="shell">
+    <section class="hero">
+      <!-- Positioning statement. Rewrite in your own words; keep it to three lines. -->
+      <h1 class="hero__statement">
+        Software developer moving into product and technical program management.
+      </h1>
+      <p class="hero__note">
+        Three case studies below. Each one opens with the decision it turned on.
+      </p>
+    </section>
+
+    <h2 class="sr-only" id="work">Case studies</h2>
+
+    <div class="rows">
+      {
+        studies.map((study) => (
+          <article class="row">
+            <h3 class="row__title">
+              <a href={`/work/${study.id}`}>{study.data.title}</a>
+            </h3>
+            <p class="row__claim">{study.data.claim}</p>
+            <p class="row__meta">
+              <span>
+                {study.data.role} · {study.data.timeframe}
+              </span>
+              <span class="row__read" aria-hidden="true">Read →</span>
+            </p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</Base>

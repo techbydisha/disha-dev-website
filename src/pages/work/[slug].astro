@@ -1,0 +1,88 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const studies = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+
+  // Prev/next walk the published studies only, so a draft never becomes a dead end.
+  const published = studies.filter((entry) => !entry.data.draft);
+
+  return studies.map((study) => {
+    const i = published.findIndex((entry) => entry.id === study.id);
+    return {
+      params: { slug: study.id },
+      props: {
+        study,
+        prev: i > 0 ? published[i - 1] : undefined,
+        next: i >= 0 && i < published.length - 1 ? published[i + 1] : undefined,
+      },
+    };
+  });
+};
+
+const { study, prev, next } = Astro.props;
+const { title, claim, role, timeframe, owned } = study.data;
+const { Content } = await render(study);
+---
+
+<Base title={title} description={claim} section="work">
+  <article class="shell study">
+    <header class="study__head">
+      <p class="label">Case study</p>
+      <h1 class="study__title">{title}</h1>
+      <p class="study__standfirst">{claim}</p>
+      <hr class="study__mark" />
+    </header>
+
+    <div class="study__grid">
+      <aside class="rail" aria-labelledby="rail-heading">
+        <h2 class="sr-only" id="rail-heading">Project details</h2>
+        <dl class="rail__list">
+          <div>
+            <dt>Role</dt>
+            <dd>{role}</dd>
+          </div>
+          <div>
+            <dt>Timeframe</dt>
+            <dd>{timeframe}</dd>
+          </div>
+          <div>
+            <dt>I owned</dt>
+            <dd>
+              <ul>
+                {owned.map((item) => <li>{item}</li>)}
+              </ul>
+            </dd>
+          </div>
+        </dl>
+      </aside>
+
+      <div>
+        <div class="prose">
+          <Content />
+        </div>
+
+        {
+          (prev || next) && (
+            <nav class="adjacent" aria-label="More case studies">
+              {prev && (
+                <div class="adjacent__item">
+                  <span class="adjacent__dir">Previous</span>
+                  <a href={`/work/${prev.id}`}>{prev.data.title}</a>
+                </div>
+              )}
+              {next && (
+                <div class="adjacent__item adjacent__item--next">
+                  <span class="adjacent__dir">Next</span>
+                  <a href={`/work/${next.id}`}>{next.data.title}</a>
+                </div>
+              )}
+            </nav>
+          )
+        }
+      </div>
+    </div>
+  </article>
+</Base>

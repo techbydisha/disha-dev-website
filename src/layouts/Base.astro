@@ -1,0 +1,90 @@
+---
+import '../styles/global.css';
+import { SITE } from '../consts';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Which nav item to mark as the current page. */
+  section?: 'work' | 'about';
+}
+
+const { title, description, section } = Astro.props;
+const pageTitle = title === SITE.name ? title : `${title} — ${SITE.name}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="color-scheme" content="light" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link
+      rel="preload"
+      href="/fonts/newsreader-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/bricolage-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="masthead">
+      <div class="shell masthead__inner">
+        <a class="masthead__name" href="/">{SITE.name}</a>
+        <nav class="masthead__nav" aria-label="Primary">
+          <a href="/#work" aria-current={section === 'work' ? 'page' : undefined}>Work</a>
+          <a href="/about" aria-current={section === 'about' ? 'page' : undefined}>About</a>
+          <a href={SITE.resume} target="_blank" rel="noopener">
+            Résumé <span class="ext" aria-hidden="true">↗</span>
+            <span class="sr-only"> (PDF, opens in a new tab)</span>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="colophon">
+      <div class="shell colophon__inner">
+        <div class="colophon__links">
+          <a href={SITE.resume} target="_blank" rel="noopener">Résumé (PDF)</a>
+          <a href={SITE.linkedin}>LinkedIn</a>
+          <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        </div>
+        <p>Built with Astro. Set in Bricolage Grotesque and Newsreader.</p>
+      </div>
+    </footer>
+
+    <style is:global>
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
+  </body>
+</html>
