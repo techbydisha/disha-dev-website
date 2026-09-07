@@ -81,11 +81,17 @@ is the reason the page is readable at 800 words.
   inside `.prose`. Replace the placeholder paragraphs.
 - **Name, résumé path, LinkedIn URL, email** — all in
   [`src/consts.ts`](src/consts.ts). Change them once; the nav and footer follow.
-- **Résumé** — replace `public/disha-nagpal-resume.pdf` with your real PDF,
+- **Résumé** — replace `public/disha-S-Nath-resume.pdf` with your real PDF,
   keeping the filename (or update `SITE.resume` in `src/consts.ts`).
-- **Your photo** — replace `public/images/disha.jpg`, keeping the filename. It
-  is displayed at a 4:5 crop, so a portrait-orientation file works best; roughly
-  800×1000 is plenty. The file there now is a grey placeholder.
+- **Your photo** — replace `public/images/disha.jpg`, keeping the filename, and
+  update `width`/`height` on the `<img>` in `src/pages/index.astro` to match.
+  It is displayed at a 4:5 crop, so a portrait file works best. Downscale it to
+  around 1000px wide first — it renders at 368px, so anything larger is wasted
+  bytes on the slowest part of the page load.
+
+Note that **everything in `public/` is served from the site root**: a file at
+`public/images/foo.pdf` is at `/images/foo.pdf`, not `/foo.pdf`. That mismatch
+is the usual cause of a link 404ing.
 
 ## Design
 
