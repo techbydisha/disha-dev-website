@@ -75,10 +75,8 @@ is the reason the page is readable at 800 words.
 
 ## The other pages
 
-- **Homepage** — [`src/pages/index.astro`](src/pages/index.astro). The
-  positioning statement is inline HTML at the top; rewrite it in your own words.
-- **About** — [`src/pages/about.astro`](src/pages/about.astro). Plain prose
-  inside `.prose`. Replace the placeholder paragraphs.
+- **Homepage** — [`src/pages/index.astro`](src/pages/index.astro). The hero
+  statement is inline HTML at the top; rewrite it in your own words.
 - **Name, résumé path, LinkedIn URL, email** — all in
   [`src/consts.ts`](src/consts.ts). Change them once; the nav and footer follow.
 - **Résumé** — replace `public/disha-S-Nath-resume.pdf` with your real PDF,

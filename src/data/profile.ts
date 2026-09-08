@@ -130,7 +130,7 @@ export const certificates: Certificates[] = [
   },
 ];
 
-/** Short bio for the homepage. The /about page carries the long version. */
+/** Short bio for the About section on the homepage. */
 export const about = [
   `I spent three and a half years building full-stack software at a cybersecurity
    company, then moved into program management and found the part I actually wanted.
