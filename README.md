@@ -95,34 +95,40 @@ is the usual cause of a link 404ing.
 
 ## Design
 
-Six colours, two faces, one signature element. All of it lives in
+**Signal** — deep violet ground, vivid pink and violet accents. All of it lives in
 [`src/styles/global.css`](src/styles/global.css), tokens at the top.
 
 | Token | Value | Job |
 | --- | --- | --- |
-| `--ink` | `#0f0f11` | Page ground (near-black) |
-| `--paper` | `#f2f0ea` | Body text, warm off-white |
+| `--bg` | `#140f1e` | Page ground, with two soft radial lights over it |
+| `--surface` | `#1d1730` | Cards: timeline entries, projects, education, the rail |
+| `--surface-hi` | `#262040` | Card hover |
+| `--ink` | `#efe9fa` | Body text |
 | `--bright` | `#ffffff` | Headlines |
-| `--graphite` | `#9c9aa2` | Metadata, captions |
-| `--brass` | `#d9ae57` | The only accent: the hero highlight, link underlines, focus ring, CTA hover |
-| `--chalk` | `#2a2a2f` | Hairlines |
-| `--sunk` | `#17171b` | The metadata rail on small screens |
+| `--muted` | `#a99dc4` | Secondary text, captions |
+| `--pink` | `#f25da8` | Primary accent: buttons, dates, links, focus ring |
+| `--violet` | `#ad85f8` | Secondary accent: orgs, tags, eyebrows |
+| `--violet-deep` | `#9b6bf5` | Decorative only — gradients and the timeline spine |
+| `--line` | `#302848` | Borders and hairlines |
 
-Lowest text contrast on the site is 6.4:1, comfortably past the 4.5:1 AA bar.
+Lowest text contrast is 5.5:1, well past the 4.5:1 AA bar. `--violet-deep` is
+darker than that bar allows for text, which is why it is restricted to gradients.
 
-**Display: Bricolage Grotesque. Body: Newsreader.** Both are self-hosted,
-latin-subset, variable `.woff2` files in `public/fonts/` — there is no request
-to Google Fonts at runtime. If you ever swap a face, replace the file and the
-`@font-face` block; the `--font-display` / `--font-body` tokens do the rest.
+**Space Grotesk** (display) and **Manrope** (body), self-hosted latin-subset
+variable files in `public/fonts/` — 46KB for both, and no request to Google
+Fonts at runtime.
 
-The homepage hero is a first-person statement with one phrase wrapped in `<em>`,
-which is what turns it gold — that `<em>` is not italic here, it's the accent.
+Section reveals use CSS `animation-timeline: view()` — no JavaScript. The site
+still ships zero JS. Browsers without support show the content normally, and the
+animation is skipped entirely under `prefers-reduced-motion`.
 
-The signature element is the **claim line**: the same sentence is the headline
-on the homepage and the standfirst on the case study, with the hierarchy
-inverted between the two. If a claim reads like a project summary rather than a
-decision, the homepage stops working — that's the one piece of writing the
-design depends on.
+## Editing your details
+
+- **Roles, education, and the short bio** — [`src/data/profile.ts`](src/data/profile.ts).
+  Everything there is a placeholder.
+- **Name, location, résumé, email, LinkedIn, GitHub** — [`src/consts.ts`](src/consts.ts).
+- **Hero sentence** — [`src/pages/index.astro`](src/pages/index.astro). Whatever
+  you wrap in `<em>` picks up the pink-to-violet gradient.
 
 ## Deploying
 

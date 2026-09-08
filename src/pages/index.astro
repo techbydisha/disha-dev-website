@@ -2,31 +2,37 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import { SITE } from '../consts';
+import { roles, education, about } from '../data/profile';
 
 const studies = (await getCollection('work'))
   .filter((entry) => !entry.data.draft)
   .sort((a, b) => a.data.order - b.data.order);
 ---
 
-<Base title={SITE.name} description={SITE.tagline} section="work">
+<Base title={SITE.name} description={SITE.tagline}>
   <div class="shell">
     <section class="hero">
       <div>
-        <!--
-          Your positioning statement. Keep it first person and keep it short —
-          it is the largest type on the site. Wrap one phrase in <em> to put
-          the gold accent on it.
-        -->
-        <h1 class="hero__statement">
-          I’m Disha. I build software, and I’m moving into <em>product</em>.
-        </h1>
-        <p class="hero__note">
-          Software developer working toward product and technical program management.
-          Three case studies below — each one opens with the decision it turned on.
+        <p class="hero__status">
+          <span class="hero__pulse" aria-hidden="true"></span>
+          Open to PM, TPM and EM roles
         </p>
-        <a class="hero__cta" href="#work">Read the work →</a>
+        <!-- Your sentence. Wrap one phrase in <em> for the gradient. -->
+        <h1 class="hero__title">
+          I ship software, and I&rsquo;m moving into <em>product</em>.
+        </h1>
+        <p class="hero__blurb">
+          Developer turning into a product and technical program manager. I like
+          the systems, and I like the people they get built for.
+        </p>
+        <div class="actions">
+          <a class="btn" href="#projects">See the work</a>
+          <a class="btn btn--ghost" href={SITE.resume} target="_blank" rel="noopener">
+            Resume <span class="ext" aria-hidden="true">↗</span>
+            <span class="sr-only"> (PDF, opens in a new tab)</span>
+          </a>
+        </div>
       </div>
-
       <img
         class="hero__portrait"
         src="/images/disha.jpg"
@@ -37,25 +43,107 @@ const studies = (await getCollection('work'))
       />
     </section>
 
-    <h2 class="sr-only" id="work">Case studies</h2>
+    <section class="section reveal" id="about" aria-labelledby="about-h">
+      <div class="section__head">
+        <h2 id="about-h">About</h2>
+      </div>
+      <div class="about__body">
+        {about.map((para) => <p>{para}</p>)}
+      </div>
+      <a class="about__link" href="/about">Read the longer version →</a>
+    </section>
 
-    <div class="rows">
-      {
-        studies.map((study) => (
-          <article class="row">
-            <h3 class="row__title">
-              <a href={`/work/${study.id}`}>{study.data.title}</a>
-            </h3>
-            <p class="row__claim">{study.data.claim}</p>
-            <p class="row__meta">
-              <span>
-                {study.data.role} · {study.data.timeframe}
-              </span>
-              <span class="row__read" aria-hidden="true">Read →</span>
-            </p>
-          </article>
-        ))
-      }
-    </div>
+    <section class="section reveal" id="experience" aria-labelledby="exp-h">
+      <div class="section__head">
+        <h2 id="exp-h">Experience</h2>
+        <p>Most recent first</p>
+      </div>
+      <ol class="timeline">
+        {
+          roles.map((role) => (
+            <li class={`entry${role.current ? ' entry--current' : ''}`}>
+              <span class="entry__dot" aria-hidden="true" />
+              <div class="entry__card">
+                <p class="entry__period">{role.period}</p>
+                <h3 class="entry__title">{role.title}</h3>
+                <p class="entry__org">{role.org}</p>
+                <p class="entry__body">{role.body}</p>
+                {role.tags && (
+                  <ul class="tags">
+                    {role.tags.map((t) => (
+                      <li>{t}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="section reveal" id="projects" aria-labelledby="proj-h">
+      <div class="section__head">
+        <h2 id="proj-h">Projects</h2>
+        <p>Case studies — the decision each one turned on</p>
+      </div>
+      <div class="projects">
+        {
+          studies.map((study) => (
+            <article class="project">
+              <h3 class="project__title">
+                <a href={`/work/${study.id}`}>{study.data.title}</a>
+              </h3>
+              <p class="project__claim">{study.data.claim}</p>
+              <p class="project__meta">
+                <span>
+                  {study.data.role} · {study.data.timeframe}
+                </span>
+                <span class="project__more" aria-hidden="true">Read →</span>
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="section reveal" id="education" aria-labelledby="edu-h">
+      <div class="section__head">
+        <h2 id="edu-h">Education</h2>
+      </div>
+      <ul class="education">
+        {
+          education.map((e) => (
+            <li>
+              <span class="education__period">{e.period}</span>
+              <div>
+                <p class="education__credential">{e.credential}</p>
+                <p class="education__school">{e.school}</p>
+                {e.detail && <p class="education__detail">{e.detail}</p>}
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="section reveal" id="contact">
+      <div class="contact">
+        <h2>Let&rsquo;s talk</h2>
+        <p>
+          I&rsquo;m looking for product, technical program and engineering
+          management roles. The fastest way to reach me is email.
+        </p>
+        <div class="actions">
+          <a class="btn" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+          <a class="btn btn--ghost" href={SITE.linkedin} target="_blank" rel="noopener">
+            LinkedIn <span class="ext" aria-hidden="true">↗</span>
+          </a>
+          <a class="btn btn--ghost" href={SITE.github} target="_blank" rel="noopener">
+            GitHub <span class="ext" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
   </div>
 </Base>

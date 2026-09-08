@@ -5,12 +5,20 @@ import { SITE } from '../consts';
 interface Props {
   title: string;
   description: string;
-  /** Which nav item to mark as the current page. */
-  section?: 'work' | 'about';
+  /** Set on sub-pages so the nav anchors point back to the homepage. */
+  subpage?: boolean;
 }
 
-const { title, description, section } = Astro.props;
-const pageTitle = title === SITE.name ? title : `${title} — ${SITE.name}`;
+const { title, description, subpage = false } = Astro.props;
+const pageTitle = title === SITE.name ? `${SITE.name} — ${SITE.tagline}` : `${title} — ${SITE.name}`;
+const home = subpage ? '/' : '';
+
+const navLinks = [
+  { href: `${home}#about`, label: 'About' },
+  { href: `${home}#experience`, label: 'Experience' },
+  { href: `${home}#projects`, label: 'Projects' },
+  { href: `${home}#contact`, label: 'Contact' },
+];
 ---
 
 <!doctype html>
@@ -23,24 +31,12 @@ const pageTitle = title === SITE.name ? title : `${title} — ${SITE.name}`;
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="color-scheme" content="dark" />
-    <meta name="theme-color" content="#0f0f11" />
+    <meta name="theme-color" content="#140f1e" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <link
-      rel="preload"
-      href="/fonts/newsreader-latin.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/bricolage-latin.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
+    <link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -49,8 +45,7 @@ const pageTitle = title === SITE.name ? title : `${title} — ${SITE.name}`;
       <div class="shell masthead__inner">
         <a class="masthead__name" href="/">{SITE.name}</a>
         <nav class="masthead__nav" aria-label="Primary">
-          <a href="/#work" aria-current={section === 'work' ? 'page' : undefined}>Work</a>
-          <a href="/about" aria-current={section === 'about' ? 'page' : undefined}>About</a>
+          {navLinks.map((l) => <a href={l.href}>{l.label}</a>)}
           <a href={SITE.resume} target="_blank" rel="noopener">
             Resume <span class="ext" aria-hidden="true">↗</span>
             <span class="sr-only"> (PDF, opens in a new tab)</span>
@@ -65,27 +60,18 @@ const pageTitle = title === SITE.name ? title : `${title} — ${SITE.name}`;
 
     <footer class="colophon">
       <div class="shell colophon__inner">
+        <p class="colophon__place">
+          <span class="colophon__pin" aria-hidden="true"></span>
+          {SITE.location}
+        </p>
         <div class="colophon__links">
-          <a href={SITE.resume} target="_blank" rel="noopener">Resume (PDF)</a>
-          <a href={SITE.linkedin}>LinkedIn</a>
-          <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+          <a href={`mailto:${SITE.email}`}>Email</a>
+          <a href={SITE.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+          <a href={SITE.github} target="_blank" rel="noopener">GitHub</a>
+          <a href={SITE.resume} target="_blank" rel="noopener">Resume</a>
         </div>
-        <p>Built with Astro. Set in Bricolage Grotesque and Newsreader.</p>
+        <p>Built with Astro.</p>
       </div>
     </footer>
-
-    <style is:global>
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-      }
-    </style>
   </body>
 </html>
