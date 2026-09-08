@@ -1,0 +1,75 @@
+---
+import Preview from '../../layouts/Preview.astro';
+import { SITE } from '../../consts';
+import { timeline, KIND_LABEL } from '../../data/timeline';
+import '../../styles/preview-studio.css';
+---
+
+<Preview name="Studio" stylesheet="preview-studio.css" fonts={['syne.woff2', 'literata.woff2']}>
+  <div class="studio">
+    <div class="studio__shell">
+      <header class="studio__top">
+        <a class="studio__wordmark" href="/preview/studio">{SITE.name}</a>
+        <nav class="studio__nav">
+          <a href="#timeline">Timeline</a>
+          <a href="/about">About</a>
+          <a href={SITE.resume}>Resume</a>
+          <a href={`mailto:${SITE.email}`}>Contact</a>
+        </nav>
+      </header>
+
+      <section class="studio__hero">
+        <div>
+          <p class="studio__eyebrow">Developer → Product &amp; TPM</p>
+          <h1 class="studio__title">
+            I'm Disha. I build the thing, then I ask <mark>who it's for</mark>.
+          </h1>
+          <p class="studio__blurb">
+            Software developer moving into product and technical program
+            management — technical enough to build it, curious enough to keep
+            asking why.
+          </p>
+          <div class="studio__actions">
+            <a class="studio__btn" href="#timeline">See the timeline</a>
+            <a class="studio__btn studio__btn--ghost" href={SITE.resume}>Resume</a>
+          </div>
+        </div>
+        <img
+          class="studio__portrait"
+          src="/images/disha.jpg"
+          alt="Disha Nath, smiling, outdoors in front of a brick and stone wall."
+          width="1000"
+          height="1250"
+        />
+      </section>
+
+      <div class="studio__section-head" id="timeline">
+        <h2>The path so far</h2>
+        <span>Most recent first</span>
+      </div>
+
+      <ol class="studio__timeline">
+        {
+          timeline.map((e) => (
+            <li class={`studio__entry${e.current ? ' studio__entry--current' : ''}`}>
+              <div class="studio__date">{e.date}</div>
+              <div>
+                <span class="studio__kind">{KIND_LABEL[e.kind]}</span>
+                <h3 class="studio__entry-title">
+                  {e.href ? <a href={e.href}>{e.title}</a> : e.title}
+                </h3>
+                {e.org && <p class="studio__org">{e.org}</p>}
+                <p class="studio__body">{e.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+
+      <footer class="studio__foot">
+        <p>Let's talk — <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+        <p><a href={SITE.linkedin}>LinkedIn</a> · <a href={SITE.resume}>Resume</a></p>
+      </footer>
+    </div>
+  </div>
+</Preview>

@@ -1,0 +1,99 @@
+---
+/**
+ * Shell for the three design directions. Deliberately does NOT load global.css —
+ * each direction brings its own stylesheet so they stay fully independent.
+ * Delete src/pages/preview/ and this file once a direction is chosen.
+ */
+import { SITE } from '../consts';
+
+interface Props {
+  name: string;
+  stylesheet: string;
+  fonts: string[];
+}
+const { name, fonts } = Astro.props;
+
+const directions = [
+  { slug: 'bloom', label: 'Bloom' },
+  { slug: 'signal', label: 'Signal' },
+  { slug: 'studio', label: 'Studio' },
+];
+const current = Astro.url.pathname.split('/').pop();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{name} — design direction — {SITE.name}</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {
+      fonts.map((f) => (
+        <link rel="preload" href={`/fonts/${f}`} as="font" type="font/woff2" crossorigin />
+      ))
+    }
+    <slot name="head" />
+  </head>
+  <body>
+    <nav class="switcher" aria-label="Design directions">
+      <span class="switcher__label">Direction</span>
+      {
+        directions.map((d) => (
+          <a href={`/preview/${d.slug}`} aria-current={current === d.slug ? 'page' : undefined}>
+            {d.label}
+          </a>
+        ))
+      }
+      <a class="switcher__live" href="/">Current site</a>
+    </nav>
+
+    <slot />
+
+    <style is:global>
+      /* The switcher is scaffolding, not part of any direction. */
+      .switcher {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.5rem 0.9rem;
+        background: #101014;
+        color: #9b9bab;
+        font: 500 12px/1 ui-sans-serif, system-ui, sans-serif;
+        letter-spacing: 0.04em;
+      }
+      .switcher__label {
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        margin-right: 0.4rem;
+        opacity: 0.7;
+      }
+      .switcher a {
+        color: #d5d5e0;
+        text-decoration: none;
+        padding: 0.4rem 0.7rem;
+        border-radius: 999px;
+      }
+      .switcher a:hover {
+        background: #22222c;
+      }
+      .switcher a[aria-current='page'] {
+        background: #f0f0f5;
+        color: #101014;
+      }
+      .switcher__live {
+        margin-left: auto;
+        opacity: 0.65;
+      }
+      .switcher a:focus-visible {
+        outline: 2px solid #7c9cff;
+        outline-offset: 2px;
+      }
+    </style>
+  </body>
+</html>

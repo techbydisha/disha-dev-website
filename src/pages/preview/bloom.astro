@@ -1,0 +1,81 @@
+---
+import Preview from '../../layouts/Preview.astro';
+import { SITE } from '../../consts';
+import { timeline, KIND_LABEL } from '../../data/timeline';
+import '../../styles/preview-bloom.css';
+---
+
+<Preview name="Bloom" stylesheet="preview-bloom.css" fonts={['fraunces.woff2', 'jakarta.woff2']}>
+  <div class="bloom">
+    <div class="bloom__shell">
+      <header class="bloom__top">
+        <a class="bloom__wordmark" href="/preview/bloom">{SITE.name}</a>
+        <nav class="bloom__nav">
+          <a href="#timeline">Timeline</a>
+          <a href="/about">About</a>
+          <a href={SITE.resume}>Resume</a>
+          <a href={`mailto:${SITE.email}`}>Say hi</a>
+        </nav>
+      </header>
+
+      <section class="bloom__hero">
+        <div>
+          <p class="bloom__hello">Hi, I'm Disha</p>
+          <h1 class="bloom__title">
+            I build software — and I like the <em>messy human part</em> just as much.
+          </h1>
+          <p class="bloom__blurb">
+            Developer moving into product and technical program management. I'm
+            happiest where the technical detail meets the people it's for.
+          </p>
+          <div class="bloom__actions">
+            <a class="bloom__btn" href="#timeline">See what I've done</a>
+            <a class="bloom__btn bloom__btn--ghost" href={SITE.resume}>Resume</a>
+          </div>
+        </div>
+        <img
+          class="bloom__portrait"
+          src="/images/disha.jpg"
+          alt="Disha Nath, smiling, outdoors in front of a brick and stone wall."
+          width="1000"
+          height="1250"
+        />
+      </section>
+
+      <section id="timeline">
+        <div class="bloom__section-head">
+          <h2>The path so far</h2>
+          <span>Most recent first</span>
+        </div>
+
+        <ol class="bloom__timeline" role="list">
+          {
+            timeline.map((e) => {
+              const Card = e.href ? 'a' : 'div';
+              return (
+                <li class={`bloom__entry${e.current ? ' bloom__entry--current' : ''}`}>
+                  <span class="bloom__dot" aria-hidden="true" />
+                  <Card class="bloom__card" href={e.href}>
+                    <div class="bloom__meta">
+                      <span class="bloom__date">{e.date}</span>
+                      <span class="bloom__kind">{KIND_LABEL[e.kind]}</span>
+                    </div>
+                    <h3 class="bloom__entry-title">{e.title}</h3>
+                    {e.org && <p class="bloom__org">{e.org}</p>}
+                    <p class="bloom__body">{e.body}</p>
+                    {e.href && <span class="bloom__more">Read the case study →</span>}
+                  </Card>
+                </li>
+              );
+            })
+          }
+        </ol>
+      </section>
+
+      <footer class="bloom__foot">
+        <p>Let's talk — <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+        <p><a href={SITE.linkedin}>LinkedIn</a> · <a href={SITE.resume}>Resume</a></p>
+      </footer>
+    </div>
+  </div>
+</Preview>
