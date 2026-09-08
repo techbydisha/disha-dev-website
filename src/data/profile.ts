@@ -41,7 +41,7 @@ export const roles: Role[] = [
       planning, and I build it. I own discovery, the PRD, user stories and
       prioritisation, and I prototype flows to validate them before committing build
       time. An engineer worked on the early version and now advises on direction.`,
-tags: ['Discovery', 'PRD', 'Prioritisation', 'Google ADK', 'FastAPI', 'Gemini', 'React'],
+    tags: ['Discovery', 'PRD', 'Prioritisation', 'Google ADK', 'FastAPI', 'Gemini', 'React'],
     current: true,
   },
   {
@@ -132,13 +132,11 @@ export const certificates: Certificates[] = [
 
 /** Short bio for the About section on the homepage. */
 export const about = [
-  `I spent three and a half years building full-stack software at a cybersecurity company, 
-  and ran a small e-commerce business alongside it. That's where I designed a storefront, 
-  took it to local popups, and learned what it costs when the unit economics don't work.
-
-  Then I moved into program management and found the part I actually wanted. Writing the stories, 
-  arguing the tradeoffs, owning what gets built instead of waiting to be handed a spec.
-
-  Today I run product on Stride, a consumer-facing AI forecasting agent. I own the discovery, 
-  the PRD and the prioritisation, and I build it.`,   
+  `I spent three and a half years building full-stack software at a cybersecurity company,
+  and ran a small e-commerce business alongside it. That's where I designed a storefront,
+  took it to local popups, and learned what it costs when the unit economics don't work.`,
+  `Then I moved into program management and found the part I actually wanted. Writing the stories,
+  arguing the tradeoffs, owning what gets built instead of waiting to be handed a spec.`,
+  `Today I run product on Stride, a consumer-facing AI forecasting agent. I own the discovery,
+  the PRD and the prioritisation, and I build it.`,
 ];
