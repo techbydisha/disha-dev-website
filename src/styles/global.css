@@ -581,15 +581,15 @@ main {
   color: var(--pink);
 }
 
-/* ---------- education ---------- */
+/* ---------- education and certifications ---------- */
 
-.education {
+.credentials {
   list-style: none;
   padding: 0;
   display: grid;
   gap: 0.75rem;
 }
-.education li {
+.credentials li {
   display: grid;
   gap: 0.2rem 1.5rem;
   padding: 1.15rem 1.35rem;
@@ -598,12 +598,12 @@ main {
   border-radius: 12px;
 }
 @media (min-width: 40rem) {
-  .education li {
+  .credentials li {
     grid-template-columns: 10rem 1fr;
     align-items: baseline;
   }
 }
-.education__period {
+.credentials__period {
   font-family: var(--display);
   font-weight: 600;
   font-size: 0.8125rem;
@@ -611,17 +611,17 @@ main {
   text-transform: uppercase;
   color: var(--pink);
 }
-.education__credential {
+.credentials__name {
   font-family: var(--display);
   font-size: 1.0625rem;
   font-weight: 600;
   color: var(--bright);
 }
-.education__school {
+.credentials__issuer {
   color: var(--violet);
   font-size: var(--step-small);
 }
-.education__detail {
+.credentials__detail {
   color: var(--muted);
   font-size: var(--step-small);
   margin-top: 0.3rem;

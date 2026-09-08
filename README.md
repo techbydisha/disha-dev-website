@@ -124,8 +124,9 @@ animation is skipped entirely under `prefers-reduced-motion`.
 
 ## Editing your details
 
-- **Roles, education, and the short bio** — [`src/data/profile.ts`](src/data/profile.ts).
-  Everything there is a placeholder.
+- **Roles, education, certifications, and the short bio** —
+  [`src/data/profile.ts`](src/data/profile.ts). Education and certifications share
+  one set of `.credentials` styles, so a new entry in either list needs no CSS.
 - **Name, location, résumé, email, LinkedIn, GitHub** — [`src/consts.ts`](src/consts.ts).
 - **Hero sentence** — [`src/pages/index.astro`](src/pages/index.astro). Whatever
   you wrap in `<em>` picks up the pink-to-violet gradient.

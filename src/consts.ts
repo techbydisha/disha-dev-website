@@ -1,11 +1,10 @@
 /** Site-wide constants. Edit these once; they appear in the nav, footer and metadata. */
 export const SITE = {
-  name: 'Disha Nath',
-  tagline: 'Software developer moving into product and technical program management',
+  name: 'Disha S Nath',
+  tagline: 'Technical product and program manager, ex-software engineer',
   location: 'Waterloo, ON',
   resume: '/disha-S-Nath-resume.pdf',
   email: 'disha.sn21@gmail.com',
-  // TODO(disha): both of these are placeholders — paste your real profile URLs.
-  linkedin: 'https://www.linkedin.com/in/your-handle',
-  github: 'https://github.com/your-handle',
+  linkedin: 'https://www.linkedin.com/in/disha21/',
+  github: 'https://github.com/techbydisha',
 } as const;

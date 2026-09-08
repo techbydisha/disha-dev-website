@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import { SITE } from '../consts';
-import { roles, education, about } from '../data/profile';
+import { roles, education, certificates, about } from '../data/profile';
 
 const studies = (await getCollection('work'))
   .filter((entry) => !entry.data.draft)
@@ -36,7 +36,7 @@ const studies = (await getCollection('work'))
       <img
         class="hero__portrait"
         src="/images/disha.jpg"
-        alt="Disha Nath, smiling, outdoors in front of a brick and stone wall."
+        alt="Disha S Nath, smiling, outdoors in front of a brick and stone wall."
         width="1000"
         height="1250"
         fetchpriority="high"
@@ -111,15 +111,35 @@ const studies = (await getCollection('work'))
       <div class="section__head">
         <h2 id="edu-h">Education</h2>
       </div>
-      <ul class="education">
+      <ul class="credentials">
         {
           education.map((e) => (
             <li>
-              <span class="education__period">{e.period}</span>
+              <span class="credentials__period">{e.period}</span>
               <div>
-                <p class="education__credential">{e.credential}</p>
-                <p class="education__school">{e.school}</p>
-                {e.detail && <p class="education__detail">{e.detail}</p>}
+                <p class="credentials__name">{e.credential}</p>
+                <p class="credentials__issuer">{e.school}</p>
+                {e.detail && <p class="credentials__detail">{e.detail}</p>}
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="section reveal" id="certifications" aria-labelledby="cert-h">
+      <div class="section__head">
+        <h2 id="cert-h">Certifications</h2>
+      </div>
+      <ul class="credentials">
+        {
+          certificates.map((c) => (
+            <li>
+              <span class="credentials__period">{c.period}</span>
+              <div>
+                <p class="credentials__name">{c.credential}</p>
+                <p class="credentials__issuer">{c.accreditor}</p>
+                {c.detail && <p class="credentials__detail">{c.detail}</p>}
               </div>
             </li>
           ))
