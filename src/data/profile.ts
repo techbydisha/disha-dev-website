@@ -37,10 +37,10 @@ export const roles: Role[] = [
     period: 'May 2026 — Present',
     title: 'Product Manager',
     org: 'Stride (independent product)',
-    body: `I run product on Stride, an AI forecasting agent for financial
-      planning, partnered with an engineer. I own discovery, the PRD, user stories and
-      prioritisation, and I prototype flows to validate them before we commit
-      engineering time. I also review code and pick up tickets.`,
+    body: `I run product on Stride, an AI forecasting agent for short-term financial
+      planning, and I build it. I own discovery, the PRD, user stories and
+      prioritisation, and I prototype flows to validate them before committing build
+      time. An engineer worked on the early version and now advises on direction.`,
     tags: ['Discovery', 'PRD', 'Prioritisation', 'Google ADK', 'Gemini', 'React'],
     current: true,
   },

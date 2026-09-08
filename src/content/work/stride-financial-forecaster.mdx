@@ -1,24 +1,73 @@
 ---
-title: "Stride: building a financial forecaster with one engineer"
-claim: "This line is the largest type on the site — make it a decision, not a summary."
-role: "Your role here"
-timeframe: "Dates here"
+title: "Stride: Forecast your finance so you don't have to"
+claim: "Budgeting apps look backwards and retirement calculators look 30 years out. The decisions people actually care about sit in between
+- we help you understand them"
+role: "Product Manager"
+timeframe: "May 2026 — Present"
 owned:
-  - "First thing you owned"
-  - "Second thing you owned"
-  - "Third thing you owned"
+  - "Discovery: user interviews and competitive research"
+  - "The PRD, user stories, and acceptance criteria"
+  - "Prioritisation, the prototype that tested it, and building the thing"
 order: 2
 draft: false
 ---
 
-Ipsum reprehenderit enim ex esse velit mollit pariatur eiusmod tincidunt exercitation. Ad ea proident sed amet est a orci esse ad culpa ut do consequat eiusmod ullamco incididunt sunt curabitur deserunt veniam. Sunt mollit ex gravida et in in aute nullam duis excepteur. Consequat exercitation officia ea quis ea ex enim irure turpis nostrud esse sed cupidatat commodo ea pretium nulla aliquip incididunt. Ut lorem id aliquip deserunt excepteur consectetur in aliquip. Nostrud turpis nostrud do excepteur tincidunt veniam deserunt consequat.
+Stride is an AI forecasting agent for short-term financial planning. I run product on
+it and I build it. An engineer now advises, and I
+check direction with them as we go.
 
-Fugiat laboris amet excepteur eu aliqua consectetur ullamco commodo amet ullamco ipsum esse proident excepteur quis voluptate do ullamco. Curabitur a est sed proident incididunt cupidatat a enim gravida tempor ad cupidatat duis proident irure voluptate sunt adipiscing voluptate nullam. Sunt dolor pariatur exercitation cupidatat non ullamco lorem qui ad culpa labore tempor non varius.
+It started as a problem I wanted to fix for myself, and after some conversation it
+kept going because the discovery turned up something worth building.
 
-## Deserunt veniam
+## What the research said
 
-Ad dolore ipsum adipiscing a aliqua cupidatat tempor varius excepteur pretium minim aliqua fugiat irure ad lacus minim sed ut occaecat. Exercitation reprehenderit dolore consectetur est velit adipiscing occaecat tempor ad nisi non exercitation id quis nullam laboris consectetur non lacus ad. Et enim ea nostrud consectetur odio amet esse et occaecat mollit a voluptate sunt. Ea culpa occaecat excepteur deserunt pretium officia veniam dolor lorem laborum anim ex deserunt mollit veniam id non. Dolore nulla qui pariatur tempor officia pretium tincidunt consectetur consectetur. Velit tincidunt eiusmod adipiscing pretium sint magna sit sed labore.
+I interviewed users about how they plan financially, and ran competitive research
+across the tools they already had. The pattern was consistent enough to build on.
 
-Irure minim nisi sed fugiat commodo ad esse aute mollit aliqua commodo pretium est ullamco molestie. Pretium ex velit excepteur amet exercitation quis non ad aute esse sint minim consequat labore nulla adipiscing pariatur. Lacus turpis ut commodo gravida cupidatat excepteur consequat sint excepteur varius aliqua pariatur cillum eiusmod officia aliquip. Adipiscing in lacus commodo voluptate turpis velit lorem amet nisi enim in qui sunt tincidunt pariatur adipiscing dolore.
+Budgeting apps are backward-looking. They are very good at telling you what you spent
+last month and close to useless for telling you what happens if you do a thing next
+year. Retirement tools go the other way, projecting 30 years out on assumptions nobody
+can hold in their head.
 
-Consectetur dolor adipiscing lorem nullam nulla reprehenderit ut lacus nulla gravida nisi proident turpis reprehenderit molestie magna ullamco. Id ad magna ipsum ea enim deserunt incididunt sed aliqua duis non consequat ipsum elit odio fugiat turpis. Lacus curabitur ea minim lorem consectetur elit gravida sit non quis ex ad elit ut ipsum a exercitation. Exercitation lacus pretium sunt veniam tincidunt voluptate sed reprehenderit adipiscing est gravida lorem sint qui.
+Neither one answers the questions people described actually agonising over. Can we
+afford this in two years. What happens to the plan if one income stops. Is this the
+year or is next year better.
+
+That two-to-five year window is where the real decisions sit, and it was the part
+neither category served.
+
+## What I own
+
+I run discovery independently, synthesise the pain points, and prioritise features. The
+PRD, user stories, and acceptance criteria are mine. Tickets go into GitHub Projects,
+prioritisation happens in Miro.
+
+The habit I care most about is prototyping before committing build time. I put a
+working prototype of a flow in front of someone before it becomes a ticket, because it
+is much cheaper to find out a flow is wrong at that stage than after it exists. That
+discipline matters more now that I am the one building it. The cost of a bad decision
+lands on my own week.
+
+<figure>
+  <img src="/images/placeholder.svg" alt="Replace with the Stride forecast view, or the prototype-to-shipped comparison for one flow." width="1200" height="675" />
+  <figcaption>Caption this with the specific flow, and what changed between prototype and build.</figcaption>
+</figure>
+
+## The build
+
+Google ADK and Gemini for the agent, FastAPI on the back end, React on the front.
+
+Writing the tickets and then implementing them has closed a loop I could not see from
+one side of it. Scope I would once have written down in a sentence now has to survive
+contact with the thing itself, and the estimates I make are better because I am the
+one who has to meet them.
+
+> Writing the ticket and then building it is the fastest feedback loop I have found on
+> my own judgment.
+
+## Where it is now
+
+Still building. The honest state is that Stride has a defined problem, a validated
+gap, a working prototype, and a prioritised backlog I am shipping against. It currently have early adopters,
+and the next thing that matters is amplifying it so I can
+stop reasoning about behaviour from interviews alone.

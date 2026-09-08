@@ -1,24 +1,73 @@
 ---
-title: "KraftyPawz: a custom ordering flow from user research"
-claim: "Replace with one sentence of judgment about this project."
-role: "Your role here"
-timeframe: "Dates here"
+title: "KraftyPawz: It's ordering flow, and the tool I killed"
+claim: "Extending the platform beat rebuilding it. Killing the second tool beat shipping it."
+role: "Chief Operating Officer, The Last Otakus Inc."
+timeframe: "Mar 2023 — Dec 2025 · concurrent, part-time"
 owned:
-  - "First thing you owned"
-  - "Second thing you owned"
-  - "Third thing you owned"
+  - "The ordering experience, from user research through checkout"
+  - "The custom path for personalised orders, and automated fulfilment"
+  - "The build-or-buy call, and the decision to shelve the second tool"
 order: 3
 draft: false
 ---
 
-Consequat aliquip amet et cillum consequat adipiscing duis a qui? In laboris eiusmod pretium ipsum minim consequat ex exercitation ad esse nostrud occaecat. Ex sint gravida id id nulla lorem sit qui aliquip varius voluptate laboris cupidatat turpis do nullam minim. Sit labore ut ad fugiat aliqua sit sit consectetur.
+KraftyPawz sells personalised pet products. I ran operations across three e-commerce
+brands, and the piece I owned most directly was the ordering experience.
 
-Sed consectetur sed molestie pariatur exercitation gravida sed occaecat ut ea ullamco ullamco labore amet amet tempor irure est incididunt. Ullamco in velit eu culpa consequat dolor fugiat commodo irure. Excepteur esse pretium id irure sit proident sit qui lacus incididunt fugiat id adipiscing gravida nullam laboris tempor varius irure.
+The starting problem was ordinary and specific. Personalised orders did not fit the
+standard checkout. Customers needed to give us information the platform had no field
+for, and every one of those orders turned into a manual back-and-forth after the sale.
+That was fine at low volume and stopped being fine.
 
-## Lorem aute nulla ea reprehenderit
+## The decision that mattered was not to rebuild
 
-Nulla exercitation irure adipiscing lorem fugiat laborum incididunt laborum. Molestie fugiat tincidunt consequat varius ad irure laboris aliquip curabitur minim labore eiusmod laborum odio ut. Incididunt non cupidatat tempor culpa sit excepteur ullamco reprehenderit consequat culpa orci pretium minim. Aliquip mollit dolore gravida amet fugiat turpis esse lacus enim deserunt a esse minim anim officia commodo turpis aliquip. Anim ex pretium nostrud duis reprehenderit enim enim ea esse lacus fugiat ad ex. Consequat ut minim ut exercitation occaecat enim aliqua reprehenderit reprehenderit qui aute.
+The obvious move was a custom storefront. I did not do that.
 
-Ut aute ullamco occaecat anim amet ipsum non qui nisi pretium in anim dolor aliqua commodo non lorem ea. Varius molestie sunt aliquip turpis aliquip quis et mollit qui velit consequat incididunt sunt ea non ad commodo culpa est. Proident lacus quis esse ipsum occaecat laborum ut amet.
+Shopify already handled the parts that are genuinely hard and genuinely boring:
+payments, tax, inventory, the checkout itself. Replacing that to solve a
+personalisation problem would have meant owning a lot of surface area that was working
+how we want it.
 
-Exercitation lacus fugiat incididunt varius mollit orci ullamco id tincidunt dolor. Eu proident mollit ullamco quis cupidatat tincidunt et nulla elit commodo aute sint non elit ipsum do. Nulla turpis consequat ut nisi reprehenderit non nulla nisi cupidatat anim laboris minim dolore sed. Odio nisi aliqua nulla proident anim in a dolore id nulla aliquip duis sint commodo culpa.
+So I extended it instead. The storefront stayed on the platform, and I built custom
+code for the two things it could not do: a path that captured personalisation details
+as part of the order rather than after it, and an automated fulfilment workflow so
+those orders stopped needing a person to route them.
+
+The work came out of watching where orders actually stalled, not out of a feature list.
+Most of what I changed was in the gap between what the customer thought they had
+submitted and what we needed to fulfil it.
+
+<figure>
+  <img src="/images/placeholder.svg" alt="Replace with the personalised-order flow, before and after, showing where the manual step used to sit." width="1200" height="675" />
+  <figcaption>Caption this with the step that disappeared, and roughly how much handling it used to take.</figcaption>
+</figure>
+
+## The second tool, and why it never shipped
+
+Editing product individually was slow. Titles, descriptions, prices, SEO
+fields, all of it one at a time. So we built an internal tool that edited them in bulk,
+with AI-generated description enhancements, on Rails against the Shopify API and the
+OpenAI API.
+
+It worked. We used it internally, and the obvious next step was to release it as a
+Shopify app.
+
+I ran the numbers instead, and the numbers said no. Storage and per-call pricing meant
+the unit economics did not work at any price we thought people would pay. So it stayed
+internal.
+
+> Building it was the easy part. The decision I would make again is the one where I
+> stopped.
+
+## What I took from it
+
+Two things, and the second one took longer to learn.
+
+The first is that platform decisions are mostly about what you are willing to own.
+Extending Shopify was not the more impressive engineering choice. It was the one that
+left a part-time team maintaining the smallest amount of surface area.
+
+The second is that a working build is not a reason to ship. The bulk editor was
+finished, useful, and demoed well. None of that changes what it would have cost to run
+per customer, and I would rather have that argument with myself before launch than
+with a P&L after it.

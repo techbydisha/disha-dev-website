@@ -1,51 +1,75 @@
 ---
-title: "Twenty days to a Microsoft API deprecation"
-claim: "Write the one sentence that says what you decided here."
-role: "Your role here"
-timeframe: "Dates here"
+title: "The deprecation nobody was tracking"
+claim: "Nobody owned third-party deprecation notices, so I built the process instead of just fixing the ticket."
+role: "Program Manager, Arctic Wolf"
+# CHECK: you wrote April–May 2026, but you caught this about two weeks into the role,
+# and you started as Program Manager in Dec 2025. Confirm the real dates.
+timeframe: "Dec 2025 — Jan 2026"
 owned:
-  - "First thing you owned"
-  - "Second thing you owned"
-  - "Third thing you owned"
+  - "The catch: finding the end-of-support notice with 20 days left"
+  - "The playbook: ownership, timelines, and an escalation path"
+  - "Alignment across Product, Engineering, and Marketing"
 order: 1
 draft: false
 ---
 
-Cupidatat adipiscing do gravida incididunt pariatur turpis elit pretium laboris amet. Sunt sed ex tempor a culpa elit nullam et nisi turpis elit varius turpis cupidatat. Consectetur odio magna in sunt aliqua orci et varius voluptate odio quis. Varius nostrud excepteur incididunt a sed nullam elit ullamco curabitur gravida culpa velit anim turpis mollit pariatur reprehenderit. Quis ea eiusmod varius reprehenderit nulla curabitur eu deserunt irure do et tincidunt sunt minim eu enim laborum sunt consectetur do?
+About two weeks into the role we saw a Microsoft end-of-support notice with 20 days
+of support left on it. The feature it affected was customer-facing and it shipped to
+the entire Windows user base.
 
-Fugiat curabitur turpis mollit sed tempor duis id sed elit voluptate varius deserunt irure. Fugiat dolor anim nulla minim labore curabitur elit laboris irure dolore ea cupidatat cupidatat curabitur eiusmod minim deserunt non? Magna qui a aute sunt nulla sint aliquip enim eiusmod veniam enim aliquip. Laborum molestie quis consequat irure lorem aliqua sunt gravida. Nullam velit dolore tincidunt adipiscing mollit odio cupidatat cupidatat non cupidatat ut est non elit nostrud sed ullamco.
+The immediate problem was easy to describe and hard to solve in 20 days. The more
+interesting problem was why nobody had seen it coming. Third-party deprecation notices
+were arriving, and no team owned watching for them. Engineering assumed Product was
+tracking vendor timelines. Product assumed the notices came through Engineering. So the
+notice had been sitting in the open for weeks and the clock had been running the whole
+time.
 
-## Id sit proident ea
+## Fixing the ticket was not the fix
 
-Eu adipiscing ut lorem nullam enim gravida incididunt pariatur sit. Ullamco sint enim commodo fugiat pariatur id et labore laborum anim est est voluptate eiusmod aliqua ut eu consequat est ad lacus. Nulla pariatur aliqua orci sit nulla reprehenderit tempor consequat lacus pariatur minim. Nisi gravida orci pretium cillum nisi nostrud ex non aliquip exercitation lacus curabitur nulla sit sit aute id consequat nostrud fugiat.
+I could have escalated the one deadline, got the work scheduled, and moved on. That
+would have solved the instance and left the mechanism intact, which meant the next
+notice would land the same way.
 
-Eiusmod nisi ut aliquip id exercitation eu ullamco est lorem est fugiat eiusmod et. Exercitation est veniam qui cillum tempor cupidatat anim non eiusmod ad minim dolore sit enim molestie anim aliqua id fugiat enim? Dolore dolor ipsum ut nulla magna qui nostrud laboris sit commodo laboris in pretium ex molestie esse. Sunt dolore elit nulla mollit turpis lacus sunt pretium dolore gravida enim nulla tincidunt dolor officia quis? Enim veniam aliqua id et odio elit esse lacus?
+So I did both. The immediate deadline got a plan and an owner. Alongside it I drafted a
+deprecation playbook and worked it through Product, Engineering, and Marketing leadership
+until each group had agreed to what they owned.
+
+The playbook answered four questions that had no answer before it:
+
+- Who watches for third-party end-of-support notices, and where do they get logged
+- What the assessment looks like, and who does it
+- Who decides whether/when we rebuild, migrate, or communicate a change to customers
+- When Marketing gets told, so customer messaging is not written in a panic
 
 <figure>
-  <img src="/images/placeholder.svg" alt="Replace this image and write alt text that says what the image shows, not that it is a screenshot." width="1200" height="675" />
-  <figcaption>Caption goes here. Images run wider than the text column, so a diagram stays readable.</figcaption>
+  <img src="/images/placeholder.svg" alt="Replace with the Lucidchart flow: a deprecation notice moving from intake through assessment, decision, and customer communication, with the owning team named at each step." width="1200" height="675" />
+  <figcaption>The playbook as a flow. Naming an owner at every step was the part that made it stick.</figcaption>
 </figure>
 
-Ut odio elit ea nostrud aute consectetur incididunt pretium deserunt odio sit sed officia esse pretium tincidunt exercitation aute deserunt tincidunt? Est pretium ea lacus consequat odio exercitation deserunt magna sunt et cupidatat officia velit do ex culpa do laboris reprehenderit et. Pariatur aliqua commodo magna anim nisi incididunt cupidatat laborum ad nisi ad qui tincidunt non eu sunt exercitation nulla velit. Pariatur dolor eu a mollit officia dolor occaecat cillum lacus in tincidunt sed labore aliquip ut eiusmod consequat duis consectetur. Dolore culpa consequat non enim gravida tincidunt varius curabitur esse tempor aute elit. Do duis dolor tempor consequat eiusmod nisi sed consequat et mollit ipsum eu a sunt.
+## What made it work
 
-## Consectetur sint amet anim sed
+Getting three functions to agree on ownership is a different job from writing the
+process down. Writing it took a day. Alignment took most of the following weeks,
+and it worked because I brought each group a draft that already accounted for what they
+would object to, rather than a blank page and a meeting invite. I gave leadership an oppotunity
+to voice their concerns to the audience and collaborate to drive visibility.
 
-Nulla ex labore ad consequat adipiscing quis exercitation voluptate. Ullamco in deserunt pretium veniam duis fugiat dolor commodo amet ipsum dolor pretium a nostrud tincidunt id. Ut qui curabitur orci cupidatat pretium voluptate laboris aliquip eu exercitation magna non fugiat adipiscing dolore. Commodo qui ad elit eiusmod sint pretium irure ea in.
+The other thing that helped was scope. The playbook covered third-party deprecation
+notices and nothing else. A broader "vendor risk process" would have been more
+impressive to describe and much harder to get agreed.
 
-Ad duis deserunt lorem consequat pariatur cillum a esse ea amet. Nulla quis lorem cillum sint eiusmod id aute pretium exercitation ea pretium. Consequat tempor aliqua non molestie consectetur cupidatat dolor reprehenderit reprehenderit. Turpis nulla enim occaecat esse curabitur enim irure aliqua consectetur? Culpa pretium magna nulla pretium nullam dolor turpis aliquip eiusmod sit consectetur magna pariatur ut sint deserunt odio adipiscing. Gravida ea laborum consequat lorem mollit sed pretium gravida tempor nulla sed id commodo do consequat ex ullamco aliquip.
+> A process that names an owner at every step survives the person who wrote it. One
+> that describes good intentions does not.
 
-> A pull quote sits here. Use it for the sentence a reader should leave with — a constraint you accepted, or a tradeoff you would make again.
+## What I would do differently
 
-Sint do est irure consectetur exercitation do aliqua cillum commodo reprehenderit nullam magna ipsum est elit laborum duis incididunt laboris laborum in? Anim anim anim et a exercitation voluptate eiusmod id dolor in mollit do? Duis occaecat ullamco ullamco do turpis tempor aliqua nulla consequat pariatur dolore tincidunt aute labore pariatur. Laborum cupidatat sit ad lorem laborum deserunt non reprehenderit aliqua sunt fugiat sint velit et cillum. Eu cupidatat et exercitation ipsum in commodo excepteur sed cupidatat occaecat molestie do pariatur. Aute adipiscing aute ut adipiscing irure enim ea duis qui tincidunt velit nostrud excepteur culpa sit non a a ullamco eiusmod.
+I would instrument it. The playbook defines what happens once a notice is found, and
+finding notices is still a human remembering to look. If I were doing it again I would
+push for something automated feeding the intake step, even a crude one, because the
+failure mode I actually caught was detection and that is the part the playbook improves
+least.
 
-## Commodo nostrud
-
-Magna irure laborum adipiscing a dolore minim id sunt eu irure reprehenderit commodo consequat non ex. Odio cupidatat et minim ad do ullamco pretium curabitur a nisi deserunt cillum deserunt culpa magna? Ea tempor veniam eu odio tempor velit ex excepteur consequat nullam exercitation. Proident occaecat proident nulla ullamco sint duis eu elit curabitur aute varius pariatur dolore pretium nulla laboris tempor duis ea. Deserunt qui voluptate dolor dolore amet culpa id molestie laborum lorem do cupidatat nulla anim. Ut nisi enim enim lacus ut mollit eiusmod a consectetur lorem dolore.
-
-- sed eu pariatur duis cillum consectetur consequat
-- velit aute reprehenderit lorem sed sit aliquip ut id
-- anim occaecat commodo qui curabitur dolore
-
-Reprehenderit dolore commodo nulla qui labore incididunt do reprehenderit nulla turpis nostrud occaecat consequat nisi lorem ipsum gravida reprehenderit. Velit ea id nulla ex a ea sit proident voluptate elit dolor nostrud. Sunt eiusmod commodo aliquip culpa excepteur aliquip curabitur amet eu sunt pariatur cupidatat exercitation lorem in pretium sed ullamco.
-
-Nostrud aliquip anim nisi consequat in ut curabitur quis nisi laborum sunt elit? Cupidatat adipiscing laboris sit aliqua sunt adipiscing elit quis cupidatat deserunt. Labore eiusmod minim cillum nostrud quis nulla anim amet voluptate sint excepteur cillum officia minim ut lorem eiusmod aute eiusmod. Et odio ullamco sint nulla voluptate qui tempor adipiscing id exercitation excepteur orci deserunt nostrud.
+I would also have written down what it cost us. I know the deadline was met and I know
+what the process looks like now. I do not have a number for how much engineering time
+the scramble consumed, and that number would have made the case for the playbook to
+anyone who was not in the room.
