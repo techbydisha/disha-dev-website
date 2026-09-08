@@ -132,12 +132,13 @@ export const certificates: Certificates[] = [
 
 /** Short bio for the About section on the homepage. */
 export const about = [
-  `I spent three and a half years building full-stack software at a cybersecurity
-   company, then moved into program management and found the part I actually wanted.
-   Writing the stories, arguing the tradeoffs, owning what gets built instead of
-   waiting to be handed a spec.`,
-  `Now I'm working toward products management. I run product on Stride, a consumer facing AI
-   forecasting agent I built. Before that I ran a small e-commerce
-   business, where I designed the storefront, took it to local popups, and learned
-   what it costs when the unit economics don't work.`,
+  `I spent three and a half years building full-stack software at a cybersecurity company, 
+  then moved into program management and found the part I actually wanted. Writing the stories, 
+  arguing the tradeoffs, owning what gets built instead of waiting to be handed a spec.`,
+  `Today I run product on Stride, a consumer-facing AI forecasting agent. I own the discovery, 
+  the PRD and the prioritisation, and I build it. Before that I ran a small e-commerce business, 
+  where I designed the storefront, took it to local popups, and learned what it costs when the unit 
+  economics don't work.`,
+
+   
 ];

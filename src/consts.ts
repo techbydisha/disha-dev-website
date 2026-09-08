@@ -1,7 +1,7 @@
 /** Site-wide constants. Edit these once; they appear in the nav, footer and metadata. */
 export const SITE = {
   name: 'Disha S Nath',
-  tagline: 'Technical product and program manager, ex-software engineer',
+  tagline: 'Technical product and program manager, software engineer',
   location: 'Waterloo, ON',
   resume: '/disha-S-Nath-resume.pdf',
   email: 'disha.sn21@gmail.com',
