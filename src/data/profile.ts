@@ -22,7 +22,7 @@ export interface Education {
   period: string;
   credential: string;
   school: string;
-  detail?: string;
+  detail?: string | string[];
 }
 
 export interface Certificates {
@@ -99,10 +99,13 @@ export const education: Education[] = [
     period: '2025 — 2027 (expected)',
     credential: 'Master of Engineering Management',
     school: 'University of Ottawa',
-    detail: `Project Management (PMBOK, stage gates, risk mitigation, stakeholder
+    detail: [
+      `Project Management (PMBOK, stage gates, risk mitigation, stakeholder
       management); Business Intelligence and Performance Management; Creativity and
-      Innovation. Currently taking Visual Literacy and User Experience Design
-      Principles, and Initiation and Design of Complex Projects and Programs.`,
+      Innovation.`,
+      `Currently taking Visual Literacy and User Experience Design Principles, and
+      Initiation and Design of Complex Projects and Programs.`,
+    ],
   },
   {
     period: '2017 — 2022',

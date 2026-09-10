@@ -84,7 +84,6 @@ const studies = (await getCollection('work'))
     <section class="section reveal" id="projects" aria-labelledby="proj-h">
       <div class="section__head">
         <h2 id="proj-h">Projects</h2>
-        <p>The decision each one turned on</p>
       </div>
       <div class="projects">
         {
@@ -118,7 +117,9 @@ const studies = (await getCollection('work'))
               <div>
                 <p class="credentials__name">{e.credential}</p>
                 <p class="credentials__issuer">{e.school}</p>
-                {e.detail && <p class="credentials__detail">{e.detail}</p>}
+                {Array.isArray(e.detail)
+                  ? e.detail.map((detailText) => <p class="credentials__detail">{detailText}</p>)
+                  : e.detail && <p class="credentials__detail">{e.detail}</p>}
               </div>
             </li>
           ))
