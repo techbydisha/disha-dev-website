@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import { SITE } from '../consts';
-import { roles, education, certificates, about } from '../data/profile';
+import { roles, skills, education, certificates, about } from '../data/profile';
 
 const studies = (await getCollection('work'))
   .filter((entry) => !entry.data.draft)
@@ -15,15 +15,16 @@ const studies = (await getCollection('work'))
       <div>
         <p class="hero__status">
           <span class="hero__pulse" aria-hidden="true"></span>
-          Open to Software Developer roles
+          Open to software engineering roles
         </p>
         <!-- Your sentence. Wrap one phrase in <em> for the gradient. -->
         <h1 class="hero__title">
-          I own the <em>product</em>, write the stories, and ship the <em>code</em>.
-          </h1>
+          I build full-stack software, from the <em>interface</em> down to the <em>infrastructure</em>.
+        </h1>
         <p class="hero__blurb">
-          I am a Fullstack Software Developer with 4+ years experience in security industry. I enjoy
-          building products that are innovative and impactful.
+          Full-stack developer with 4+ years shipping production web applications in React,
+          TypeScript, Node.js, Python and Go. I own features end to end, through PostgreSQL, AWS
+          and Kubernetes, and I care about how they run once they ship.
         </p>
         <div class="actions">
           <a class="btn" href="#projects">See my work</a>
@@ -67,6 +68,13 @@ const studies = (await getCollection('work'))
                 <h3 class="entry__title">{role.title}</h3>
                 <p class="entry__org">{role.org}</p>
                 <p class="entry__body">{role.body}</p>
+                {role.highlights && (
+                  <ul class="entry__highlights">
+                    {role.highlights.map((h) => (
+                      <li>{h}</li>
+                    ))}
+                  </ul>
+                )}
                 {role.tags && (
                   <ul class="tags">
                     {role.tags.map((t) => (
@@ -79,6 +87,27 @@ const studies = (await getCollection('work'))
           ))
         }
       </ol>
+    </section>
+
+    <section class="section reveal" id="skills" aria-labelledby="skills-h">
+      <div class="section__head">
+        <h2 id="skills-h">Skills</h2>
+        <p>Used in production</p>
+      </div>
+      <ul class="credentials">
+        {
+          skills.map((group) => (
+            <li>
+              <span class="credentials__period">{group.area}</span>
+              <ul class="tags tags--flush">
+                {group.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </li>
+          ))
+        }
+      </ul>
     </section>
 
     <section class="section reveal" id="projects" aria-labelledby="proj-h">
@@ -151,8 +180,8 @@ const studies = (await getCollection('work'))
       <div class="contact">
         <h2>Let&rsquo;s talk</h2>
         <p>
-          I&rsquo;m looking for product and technical program
-          management roles. The fastest way to reach me is email.
+          I&rsquo;m looking for full-stack, backend and platform software engineering
+          roles. The fastest way to reach me is email, and my code is on GitHub.
         </p>
         <div class="actions">
           <a class="btn" href={`mailto:${SITE.email}`}>{SITE.email}</a>

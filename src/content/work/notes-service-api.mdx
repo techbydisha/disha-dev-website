@@ -1,0 +1,51 @@
+---
+title: "Notes service: the API that let a monolith come apart"
+claim: "Before a service can leave a monolith, it needs a contract of its own. I rebuilt the Notes API and schema so that it could."
+role: "Software Developer, Arctic Wolf"
+timeframe: "2022 — 2025"
+owned:
+  - "The full CRUD, search and list API surface"
+  - "The schema change to UUID identifiers"
+  - "SLIs, SLOs and alerting for the service"
+order: 2
+draft: false
+---
+
+Arctic Wolf ran a monolithic repository that a lot of teams depended on. The plan was to
+decouple it over three quarters with a three-person team, and to move services from Python
+to Go along the way. The Notes service was one of the things standing in the way.
+
+## Rebuilding the API surface
+
+I rebuilt the full API surface for Notes: create, read, update and delete, plus search and
+list. The service was built against PostgreSQL, with Elasticsearch behind search.
+
+The point was to give Notes a complete, explicit contract. As long as other parts of the
+system could reach into Notes however they liked, it couldn't move. Once every consumer
+went through a defined API, what happened behind that API could change, including the
+language it was written in.
+
+## Changing the identifiers
+
+I also added UUID identifiers to the Notes schema. Identifiers that don't depend on one
+database's sequence are what let records be created, referenced and moved across service
+boundaries safely. It's a small schema change that a decomposition quietly depends on.
+
+Those two changes together unblocked the decoupling, and the services that followed could
+be migrated from Python to Go.
+
+## Running it, not just shipping it
+
+A service you own is one you have to know is healthy. I defined the SLIs and SLOs for
+Notes and set up alerting for it: Prometheus metrics surfaced in Grafana, and CloudWatch
+and PagerDuty alerts routed at agreed severity levels, so an alert reached the right people
+with the right urgency.
+
+> A migration plan is only as good as the contracts underneath it.
+
+## What I took from it
+
+Decomposing a monolith is mostly not about the new services. It's about the boundaries:
+making each one explicit, giving it a stable contract and stable identifiers, and being
+able to tell when it's healthy. The rewrite into Go was the visible part. The API and the
+schema were what made it possible.
