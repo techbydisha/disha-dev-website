@@ -32,6 +32,10 @@ const studies = (await getCollection('work'))
             Resume <span class="ext" aria-hidden="true">↗</span>
             <span class="sr-only"> (PDF, opens in a new tab)</span>
           </a>
+          <a class="btn btn--ghost" href={SITE.linkedin} target="_blank" rel="noopener">
+            LinkedIn <span class="ext" aria-hidden="true">↗</span>
+            <span class="sr-only"> (opens in a new tab)</span>
+          </a>
         </div>
       </div>
       <img
@@ -89,27 +93,6 @@ const studies = (await getCollection('work'))
       </ol>
     </section>
 
-    <section class="section reveal" id="skills" aria-labelledby="skills-h">
-      <div class="section__head">
-        <h2 id="skills-h">Skills</h2>
-        <p>Used in production</p>
-      </div>
-      <ul class="credentials">
-        {
-          skills.map((group) => (
-            <li>
-              <span class="credentials__period">{group.area}</span>
-              <ul class="tags tags--flush">
-                {group.items.map((item) => (
-                  <li>{item}</li>
-                ))}
-              </ul>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
-
     <section class="section reveal" id="projects" aria-labelledby="proj-h">
       <div class="section__head">
         <h2 id="proj-h">Projects</h2>
@@ -132,6 +115,27 @@ const studies = (await getCollection('work'))
           ))
         }
       </div>
+    </section>
+
+    <section class="section reveal" id="skills" aria-labelledby="skills-h">
+      <div class="section__head">
+        <h2 id="skills-h">Skills</h2>
+        <p>Used in production</p>
+      </div>
+      <ul class="credentials">
+        {
+          skills.map((group) => (
+            <li>
+              <span class="credentials__period">{group.area}</span>
+              <ul class="tags tags--flush">
+                {group.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </li>
+          ))
+        }
+      </ul>
     </section>
 
     <section class="section reveal" id="education" aria-labelledby="edu-h">
