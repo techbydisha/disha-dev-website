@@ -1,73 +1,65 @@
 ---
-title: "Stride: Forecasting your financial future"
-claim: "Most tools either look backwards or thirty years ahead. I chose to focus on the gap.
-The decisions people struggle over sit two to five years out, which is exactly where the focus needs to be."
+title: "Stride: an AI financial planner, built and shipped solo"
+claim: "Most tools either look backwards or thirty years ahead. I'm building the one for the two to five years in between, end to end, and shipping it to real users."
 role: "Co-founder and Engineer"
 timeframe: "May 2026 — Present"
 owned:
-  - "Discovery: user interviews and competitive research"
-  - "User stories, and acceptance criteria"
-  - "Development, optimization and improvement"
+  - "Architecture and the full codebase, front end to data"
+  - "The Gemini-powered conversational tool"
+  - "Shipping to early adopters, and iterating on what they hit"
 order: 1
 draft: false
 ---
 
-Stride is an AI forecasting agent for short-term financial planning. I run product on
-it and I build it. 
+Stride is an AI-powered financial planning tool. I design it, write it, deploy it, and
+support the early adopters using it.
 
-It started as a problem I wanted to fix for myself, and after some conversation it
-kept going because the discovery turned up something worth building.
-
-## What the research said
-
-I interviewed users about how they plan financially, and ran competitive research
-across the tools they already had. The pattern was consistent enough to build on.
-
-Budgeting apps are backward-looking. They are very good at telling you what you spent
-last month and close to useless for telling you what happens if you do a thing next
-year. Retirement tools go the other way, projecting 30 years out on assumptions nobody
-can hold in their head.
-
-Neither one answers the questions people described actually agonising over. Can we
-afford this in two years. What happens to the plan if one income stops. Is this the
-year or is next year better.
-
-That two-to-five year window is where the real decisions sit, and it was the part
-neither category served.
-
-## What I own
-
-I run discovery independently, synthesise the pain points, and prioritise features. The
-PRD, user stories, and acceptance criteria are mine. Tickets go into GitHub Projects,
-prioritisation happens in Miro.
-
-The habit I care most about is prototyping before committing build time. I put a
-working prototype of a flow in front of someone before it becomes a ticket, because it
-is much cheaper to find out a flow is wrong at that stage than after it exists. That
-discipline matters more now that I am the one building it. The cost of a bad decision
-lands on my own week.
+It started as a problem I wanted to fix for myself. Budgeting apps are very good at
+telling you what you spent last month. Retirement tools project 30 years out on
+assumptions nobody can hold in their head. Neither answers the questions people actually
+agonise over: can we afford this in two years, what happens to the plan if one income
+stops, is this the year or is next year better. I talked to users and looked at the tools
+they already had, and that two-to-five year window was the gap. So I started building.
 
 <figure>
   <img src="/images/stride-forecast.jpg" alt="Stride's landing page. Below the headline, a forecast panel reads 'Net worth, Sep 2031, committed path: $70,003', with a note that it would be $28,362 if the exploring goal were committed. A chart plots net worth from Sep 2026 to Sep 2031: a solid line for the committed path and a dashed line for the alternative, diverging sharply after a large drop in Mar 2028." width="1472" height="958" />
   <figcaption>The forecast view: the solid line is the plan as committed, the dashed line is what a
-  goal under consideration would cost — shown side by side, rather than one replacing the other.</figcaption>
+  goal under consideration would cost, shown side by side rather than one replacing the other.</figcaption>
 </figure>
 
-## The build
+## The stack
 
-Google ADK and Gemini for the agent, FastAPI on the back end, React on the front.
+- **Front end:** React and TypeScript.
+- **Backend and data:** Firebase, with Firestore for storage, Firebase Auth for accounts,
+  and Firebase Hosting for deploys.
+- **AI:** Gemini powers a conversational tool inside the product.
 
-Writing the tickets and then implementing them has closed a loop I could not see from
-one side of it. Scope I would once have written down in a sentence now has to survive
-contact with the thing itself, and the estimates I make are better because I am the
-one who has to meet them.
+I picked Firebase on purpose. As the only engineer, every piece of infrastructure I run
+myself is time I'm not spending on the product. Managed auth, storage and hosting let me
+put that time into the forecasting model and the interface, which are the parts users
+actually notice.
 
-> Writing the ticket and then building it is the fastest feedback loop I have found on
-> my own judgment.
+## The forecast is the hard part
+
+The core of Stride is the forecast: take a person's current position, their committed
+plans, and a goal they are only exploring, and project both paths forward month by month
+so they can be compared on the same chart. Getting that right is less about the charting
+and more about the model underneath it. Every committed goal, recurring cost and income
+change has to land in the right month, and the "what if" path has to share everything with
+the committed one except the thing being explored.
+
+## Building with an AI coding partner
+
+I build Stride with Claude Code as my primary coding partner. In practice that means I own
+the design and the decisions, break the work into small, reviewable changes, and read every
+diff before it lands. The assistant makes me faster at the parts that are mostly typing.
+It doesn't replace knowing what the code should do, and it makes reviewing carefully more
+important, not less.
+
+> The assistant writes a lot of the keystrokes. I still own every line that ships.
 
 ## Where it is now
 
-Still building. The honest state is that Stride has a defined problem, a validated
-gap, a working prototype, and a prioritised backlog I am shipping against. It currently have early adopters,
-and the next thing that matters is amplifying it so I can
-stop reasoning about behaviour from interviews alone.
+Stride is live with early adopters. The loop I care about now is the one between what they
+actually do in the product and what I build next, so I can stop reasoning about behaviour
+from interviews alone.

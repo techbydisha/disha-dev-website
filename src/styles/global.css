@@ -494,6 +494,30 @@ main {
   border-radius: 5px;
 }
 
+.entry__highlights {
+  margin-top: 0.65rem;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.35rem;
+  color: var(--muted);
+  font-size: var(--step-small);
+  max-width: 62ch;
+}
+.entry__highlights li::marker {
+  color: var(--violet);
+}
+
+.tags--flush {
+  margin-top: 0;
+}
+/* Skill pills sit inside .credentials cards; undo the card styling on the inner list items. */
+.credentials .tags li {
+  display: block;
+  padding: 0.2rem 0.5rem;
+  background: none;
+  border-radius: 5px;
+}
+
 /* ---------- projects ---------- */
 
 .projects {

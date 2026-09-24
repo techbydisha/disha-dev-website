@@ -1,0 +1,44 @@
+---
+title: "Feature flags: from a ticket queue to self-serve"
+claim: "Changing a flag shouldn't take a ticket. With guardrails and an audit log, it doesn't have to."
+role: "Software Developer, Arctic Wolf"
+timeframe: "2022 — 2025"
+owned:
+  - "Streamlining the flag system into a self-serve tool"
+  - "The guardrails around who could change what"
+  - "CloudWatch audit logging for every change"
+order: 3
+draft: false
+---
+
+Feature flags are meant to make changes cheap. At Arctic Wolf, changing one meant filing a
+ticket and waiting for it to come off a queue. The flag itself took seconds. The process
+around it took far longer, and every engineer who needed a flag flipped was blocked on
+someone else to do it.
+
+## Why the queue existed
+
+The queue wasn't there by accident. Flags control production behaviour, and a wrong change
+can hurt customers. The ticket was a safety mechanism: a person checked the change before it
+happened, and the ticket left a record of it afterwards.
+
+So removing the queue meant keeping both of those properties without the person in the
+middle.
+
+## Guardrails and an audit trail
+
+I streamlined the flag system into a self-serve tool that any engineer in the company could
+use directly. Guardrails replaced the manual check, constraining what a change could do
+before it was applied. CloudWatch audit logging replaced the ticket as the record, so every
+change was traceable to who made it and when.
+
+With both in place, the queue had nothing left to do. Removing it cut the friction on flag
+changes by 70%.
+
+> The goal wasn't fewer controls. It was moving the controls into the tool.
+
+## What I took from it
+
+Most internal process exists because it protects something. The work is figuring out what,
+then building that protection into the system so the process can go away. Done that way,
+you get speed and safety together rather than trading one for the other.
