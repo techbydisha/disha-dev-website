@@ -35,13 +35,12 @@ export interface Certificates {
 export const roles: Role[] = [
   {
     period: 'May 2026 — Present',
-    title: 'Product Manager',
+    title: 'Co-founder and Engineer',
     org: 'Stride (independent product)',
-    body: `I run product on Stride, an AI forecasting agent for short-term financial
-      planning, and I build it. I own discovery, the PRD, user stories and
-      prioritisation, and I prototype flows to validate them before committing build
-      time. An engineer worked on the early version and now advises on direction.`,
-    tags: ['Discovery', 'PRD', 'Prioritisation', 'Google ADK', 'FastAPI', 'Gemini', 'React'],
+    body: `I run product and engineering on Stride, an AI forecasting agent for short-term financial
+      planning. I own discovery, user stories and I prototype flows to validate them before committing build
+      time. I implement the solutions and work closely with the team to ensure successful delivery.`,
+    tags: ['Discovery', 'Google ADK', 'FastAPI', 'Gemini', 'React', 'TypeScript',],
     current: true,
   },
   {
@@ -111,6 +110,9 @@ export const education: Education[] = [
     period: '2017 — 2022',
     credential: 'BEng, Systems and Computing Engineering (Co-op)',
     school: 'University of Guelph',
+    detail: [
+      `Data Algorithms`,
+    ],
   },
 ];
 
@@ -135,11 +137,11 @@ export const certificates: Certificates[] = [
 
 /** Short bio for the About section on the homepage. */
 export const about = [
-  `I spent three and a half years building full-stack software at a cybersecurity company,
-  and ran a small e-commerce business alongside it. That's where I designed a storefront,
-  took it to local popups, and learned what it costs when the unit economics don't work.`,
-  `Then I moved into program management and found the part I actually wanted. Writing the stories,
-  arguing the tradeoffs, owning what gets built instead of waiting to be handed a spec.`,
-  `Today I run product on Stride, a consumer-facing AI forecasting agent. I own the discovery,
-  the PRD and the prioritisation, and I build it.`,
+  `I spent 4+ years building full-stack solutions at a cybersecurity company,
+   where I designed and implemented frontend features, migrated legacy systems from python to go, made new APIs and
+    built a new microservice architecture. I also worked on CI/CD pipelines and internal tooling to improve developer experience and productivity.
+   Alongside this I also ran operations for my e-commerce business, where I designed and built the ordering experience for our Shopify store.`,
+
+  `Today I am the co-founder of Stride - a customer facing AI powered financial tool. I run product and engineering 
+  using AI agents to help me with discovery, prototyping, prioritisation and implementation.`,
 ];
