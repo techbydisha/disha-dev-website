@@ -250,6 +250,19 @@ main {
 .masthead__nav a[aria-current='page'] {
   color: var(--pink);
 }
+/* The one outbound product link: a pill, so it reads as a button rather than a section. */
+.masthead__nav .masthead__cta {
+  color: var(--pink);
+  font-weight: 600;
+  border: 1px solid var(--pink);
+  border-radius: 999px;
+  padding: 0.1rem 0.75rem;
+  margin-block: -0.1rem;
+}
+.masthead__nav .masthead__cta:hover {
+  color: var(--bg);
+  background: var(--pink);
+}
 
 .ext {
   font-size: 0.8em;
