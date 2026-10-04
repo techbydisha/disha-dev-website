@@ -7,4 +7,5 @@ export const SITE = {
   email: 'disha.sn21@gmail.com',
   linkedin: 'https://www.linkedin.com/in/disha21/',
   github: 'https://github.com/techbydisha',
+  stride: 'https://stride-app.web.app/',
 } as const;
